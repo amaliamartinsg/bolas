@@ -100,7 +100,7 @@ form button:disabled,input:disabled{opacity:.6}
 <li><span class="num" aria-hidden="true">1</span><p><b>Resuelve</b> cada acertijo y escribe la palabra.</p></li>
 <li><span class="num" aria-hidden="true">2</span><p><b>Si aciertas</b>, se desbloquea una pista del plan de mañana.</p></li>
 <li><span class="num" aria-hidden="true">3</span><p><b>Si fallas</b>, se rompe una de tus 3 bolas de Navidad. Si se rompen las tres, esa palabra se bloquea y <b>esa pista se pierde para siempre</b>.</p></li>
-<li><span class="num" aria-hidden="true">4</span><p><b>El premio:</b> con las tres palabras, recibes el planning completo del sábado. Si no, solo las pistas de las palabras que aciertes.</p></li>
+<li><span class="num" aria-hidden="true">4</span><p><b>El premio:</b> si aciertas las tres palabras, te entregaremos el planning completo del sábado, impreso. Si no, solo tendrás las pistas de las palabras que aciertes.</p></li>
 </ol>
 <a class="go" href="#camino">Empezar el camino</a>
 </header>
@@ -232,13 +232,12 @@ form button:disabled,input:disabled{opacity:.6}
 
     var fin = '';
     if (done) {
-      fin = '<section class="final" aria-label="Resultado de la misión"><span class="k">' + (all ? 'Sábado desbloqueado' : 'Misión terminada') + '</span><h2>' + (all && plan ? esc(plan.t) : 'Esto es lo que has desbloqueado') + '</h2><p class="lead">' + (all ? 'Las tres palabras. Aquí tienes el planning completo del sábado.' : 'No has conseguido las tres palabras, así que no hay planning completo. Estas son tus pistas.') + '</p><ul>';
+      fin = '<section class="final" aria-label="Resultado de la misión"><span class="k">' + (all ? 'Sábado desbloqueado' : 'Misión terminada') + '</span><h2>' + (all ? '¡Lo has conseguido!' : 'Esto es lo que has desbloqueado') + '</h2><p class="lead">' + (all ? 'Las tres palabras. Estas son tus pistas, y nosotras te entregaremos el planning completo del sábado, impreso, para que empiece el día.' : 'No has conseguido las tres palabras, así que no hay planning completo. Estas son tus pistas.') + '</p><ul>';
       for (var j = 0; j < 3; j++) {
         var ok = !!st.solved[j];
         fin += '<li style="background:' + (ok ? '#E4EFE0' : '#FBE3E1') + ';color:' + (ok ? '#16342A' : '#7E1A23') + '"><b>' + (j + 1) + '</b><span>' + (ok ? 'Pista: ' + esc(st.solved[j].d.c) : 'Pista perdida. Esta palabra se bloqueó.') + '</span></li>';
       }
       fin += '</ul>';
-      if (all && plan) fin += '<div class="plan">' + esc(plan.p) + '</div>';
       if (!all) fin += '<p class="lost">Las pistas perdidas no se recuperan. Lo que falte del sábado lo descubrirás cuando llegue.</p>';
       fin += '</section>';
     }
