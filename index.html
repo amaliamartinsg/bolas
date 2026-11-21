@@ -21,7 +21,7 @@ p{margin:0}
 :focus-visible{outline:3px solid #D4A73C;outline-offset:2px}
 .tabs{display:flex;gap:8px}
 .tab{flex:1;min-height:48px;border:2px solid #16342A;border-radius:16px;background:transparent;color:#16342A;font:700 16px 'Figtree',system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
-.tab[aria-selected=true]{background:#16342A;color:#FBF3E4}
+.tab[aria-current=page]{background:#16342A;color:#FBF3E4}
 .tab:disabled{border-color:#D8CBB0;color:#7B857E;cursor:default}
 .banner{border-radius:14px;padding:12px 14px;background:#FBE3E1;color:#7E1A23;font-size:14px;font-weight:700;line-height:1.4}
 .hero{position:relative;overflow:hidden;border-radius:26px;padding:26px 22px 24px;background:#A8232F;color:#FBF3E4;display:flex;flex-direction:column;gap:16px}
@@ -104,6 +104,7 @@ form button:disabled,input:disabled{opacity:.6}
 <body>
 <main class="wrap">
 <nav class="tabs" id="tabs" aria-label="Días"></nav>
+<noscript><p class="banner">Esta página necesita JavaScript activado.</p></noscript>
 <div id="banner"></div>
 <div id="day"></div>
 </main>
@@ -239,15 +240,21 @@ form button:disabled,input:disabled{opacity:.6}
     var el = document.getElementById('plan'), d = planOpen && dayById(planOpen);
     if (d && d.plan_body && String(d.plan_body).trim()) {
       var top = el.scrollTop;
+      var was = el.classList.contains('open');
       el.innerHTML = planScreen(d); el.classList.add('open'); document.body.style.overflow = 'hidden'; el.scrollTop = top;
-    } else { planOpen = null; el.classList.remove('open'); el.innerHTML = ''; document.body.style.overflow = ''; }
+      if (!was) { var bk = el.querySelector('.back'); if (bk) bk.focus(); }
+    } else {
+      var wasOpen = el.classList.contains('open');
+      planOpen = null; el.classList.remove('open'); el.innerHTML = ''; document.body.style.overflow = '';
+      if (wasOpen) { var pb = document.querySelector('button[data-plan]'); if (pb) pb.focus(); }
+    }
   }
 
   function finalBox(d) {
     if (!d.finished) return '';
     var all = d.all_solved, hasPlan = d.plan_body && String(d.plan_body).trim();
     var h = '<section class="final" aria-label="Resultado"><span class="k">' + (all ? 'Desbloqueado' : 'Misión terminada') + '</span><h2>' + (all ? '¡Lo has conseguido!' : 'Esto es lo que has desbloqueado') + '</h2>';
-    h += '<p class="lead">' + (all ? (hasPlan ? 'Las tres palabras. Aquí tienes tus pistas y el planning completo.' : 'Las tres palabras. Estas son tus pistas, y el planning completo te lo daremos nosotras.') : 'No has conseguido las tres palabras, así que no hay planning completo. Estas son tus pistas.') + '</p><ul>';
+    h += '<p class="lead">' + (all ? (hasPlan ? 'Las tres palabras. Aquí tienes tus pistas y el planning completo.' : 'Las tres palabras. Estas son tus pistas, y el planning completo te lo daremos nosotras.') : (hasPlan ? 'No has conseguido las tres palabras. Estas son tus pistas y lo que te hemos querido enseñar.' : 'No has conseguido las tres palabras, así que no hay planning completo. Estas son tus pistas.')) + '</p><ul>';
     d.words.forEach(function (w, j) {
       var ok = w.status === 'solved';
       h += '<li style="background:' + (ok ? '#E4EFE0' : '#FBE3E1') + ';color:' + (ok ? '#16342A' : '#7E1A23') + '"><b>' + (j + 1) + '</b><span>' + (ok ? 'Pista: ' + esc(w.clue) : 'Pista perdida. Esta palabra se bloqueó.') + '</span></li>';
@@ -271,7 +278,7 @@ form button:disabled,input:disabled{opacity:.6}
   function render() {
     var tabs = '';
     (state.days || []).forEach(function (d) {
-      tabs += '<button class="tab" role="tab" data-day="' + esc(d.id) + '" aria-selected="' + (d.id === cur) + '"' + (d.open ? '' : ' disabled') + '>' + (d.open ? '' : SVG.lockSm) + esc(d.title) + '</button>';
+      tabs += '<button class="tab" data-day="' + esc(d.id) + '"' + (d.id === cur ? ' aria-current="page"' : '') + (d.open ? '' : ' disabled') + '>' + (d.open ? '' : SVG.lockSm) + esc(d.title) + '</button>';
     });
     document.getElementById('tabs').innerHTML = tabs;
     document.getElementById('banner').innerHTML = offline ? '<p class="banner" role="status">Sin conexión: puedes mirar lo que ya tenías, pero no probar palabras hasta que vuelva internet. No se gasta ningún intento.</p>' : '';

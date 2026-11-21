@@ -1,6 +1,7 @@
--- Despedida de Sanae · base de datos (Supabase)
--- Pegar entero en Supabase > SQL Editor > New query > Run.
--- Se puede volver a ejecutar: borra y recrea las tablas (¡reinicia todo el progreso y los textos!).
+-- Despedida de Sanae · estructura de la base de datos (Supabase)
+-- Esta parte NO lleva respuestas ni planning: es la única que puede estar en el repositorio público.
+-- Pegar en Supabase > SQL Editor > New query > Run. Después, ejecutar contenido-inicial.sql.
+-- ¡Cuidado!: si se vuelve a ejecutar, borra y recrea las tablas (reinicia progreso y textos).
 
 drop function if exists public.app_state();
 drop function if exists public.app_try(text, text);
@@ -149,46 +150,3 @@ end $$;
 
 revoke all on function public.app_state(), public.app_try(text, text) from public;
 grant execute on function public.app_state(), public.app_try(text, text) to anon, authenticated;
-
--- ============================ CONTENIDO INICIAL ============================
-
-insert into public.days (id, pos, title, kicker, intro, opens_at, force_open, seq, plan_title, plan_body, plan_force) values
-('viernes', 1, 'Viernes', 'Misión 1',
- 'Cada día de tu despedida desbloquea una serie de pruebas. La de hoy: tres acertijos, tres palabras y tres pistas de lo que te espera mañana.',
- null, false, true,
- 'Planning del sábado',
- '10:00 | Café y desayuno ligero | Para empezar el día con energía.
- | Paseíto por la ciudad | Sin prisa, a ritmo relajado.
-13:00 | Brunch | Ven con hambre.
- | Revelación de la misión del día | Al terminar el brunch descubrirás qué te toca hoy.
- | Tus rincones favoritos | Tú nos enseñas los lugares de la ciudad que más te gustan.
-17:00 | Mercadillo y merendola | Mercadillo navideño, con merienda incluida. Abrígate bien.
- | A cambiarse | Un rato para coger fuerzas y arreglarnos.
-20:30 | Cena en un restaurante | Todas monas.
- | Noche de reggaeton | Discoteca y música de reggaeton. Ve preparando los pies.',
- false),
-('sabado', 2, 'Sábado', 'Misión 2',
- 'Cada prueba que consigas nos la cuentas y desbloqueamos una palabra. Cada palabra acertada te da una pista del plan de mañana.',
- '2026-11-28 00:00:00+01', false, false,
- 'Planning del domingo', '', false);
-
-insert into public.words (id, day, pos, label, riddle, accept, clue, unlocked) values
-('brunch', 'viernes', 1, 'Brunch',
- 'Nací de dos comidas que casi no se hablan. Llego tarde para la primera y pronto para la segunda, y quien me pide nunca tiene prisa.',
- 'brunch|bruch', 'Habrá brunch. Ven con hambre.', false),
-('mercadillo', 'viernes', 2, 'Mercadillo',
- 'Soy un pueblo sin vecinos que desaparece sin dejar rastro. Mis casitas no tienen cama ni cocina, pero huelen a Navidad, a canela y a vino caliente. Quien me visita siempre se va con algo que no necesitaba.',
- 'mercadillo|mercadillos|mercado|mercados|mercadito|mercado de navidad|mercado navideño|mercadillo de navidad|mercadillo navideño|mercadillo navidad|mercado navidad|christkindlmarkt|christkindlesmarkt|weihnachtsmarkt',
- 'Iremos a un mercadillo de Navidad. Abrígate bien.', false),
-('reggaeton', 'viernes', 3, 'Reggaeton',
- 'Nací en una isla del Caribe, pero me hicieron famoso en discotecas de medio mundo. Mi latido es un «bum, ca, bum, ca» que no se cansa de repetirse, y suena más fuerte cuanto más tarde se hace. No soy un baile: soy lo que suena mientras otros lo bailan, pegados y hasta abajo.',
- 'reggaeton|regueton|reggaetton|reguetton|reggeton|regeton', 'Habrá noche de reggaeton. Ve preparando los pies.', false),
-('tren', 'sabado', 1, 'Tren',
- 'Sigo dos líneas que nunca se tocan y arrastro a mucha gente sin cansarme. Aquí presumo de puntual… y no siempre me creen.',
- 'tren|trenes', 'Mañana viajamos en tren.', false),
-('tegernsee', 'sabado', 2, 'Tegernsee',
- 'Soy pueblo y valle a la vez, al sur de Múnich, a los pies de las montañas. Mi nombre acaba en una palabra que en inglés significa «ver», pero en alemán quiere decir otra cosa.',
- 'tegernsee|tegernse|tegern', 'Mañana vamos a Tegernsee.', false),
-('lago', 'sabado', 3, 'Lago',
- 'Tengo orillas y no soy río; tengo barcos y no soy mar. Las montañas se miran en mí como en un espejo y, cuando estoy quieta, el cielo se ve dos veces.',
- 'lago|lagos', 'Mañana hay un lago.', false);

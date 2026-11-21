@@ -116,7 +116,7 @@ details summary{cursor:pointer;font-weight:700;font-size:14px}
       });
       h += '<div class="card sub"><h3>Planning que desbloquea este día</h3><label>Título<input type="text" data-p="plan_title" value="' + esc(d.plan_title) + '"></label><label>Una línea por parada con formato «hora | título | descripción». Sin hora (sale «Después»), deja vacío antes de la primera barra: « | título | descripción»<textarea data-p="plan_body" style="min-height:190px">' + esc(d.plan_body) + '</textarea></label><div class="row"><button data-act="saveplan" class="pri">Guardar planning</button><button data-act="planforce" class="' + (d.plan_force ? 'on' : '') + '">' + (d.plan_force ? 'Enseñado a la fuerza (quitar)' : 'Enseñárselo ya aunque no haya acertado') + '</button></div><p class="muted">Se lo enseña la web cuando acierta las tres palabras del día, o si lo fuerzas aquí.</p></div></section>';
     });
-    h += '<section class="card"><h2>Reiniciar todo</h2><p class="muted">Pone a cero los intentos, las palabras acertadas y los desbloqueos de todos los días (para la prueba general). No toca los textos.</p><button class="red" data-act="resetall">Reiniciar todo el progreso</button></section>';
+    h += '<section class="card"><h2>Reiniciar todo</h2><p class="muted">Pone a cero los intentos, las palabras acertadas y los desbloqueos de todos los días, y quita «Abrir ya» y «Enseñar planning ya» (para la prueba general y justo antes de empezar). No toca los textos ni las fechas.</p><button class="red" data-act="resetall">Reiniciar todo el progreso</button></section>';
     app.innerHTML = h;
   }
 
@@ -137,8 +137,8 @@ details summary{cursor:pointer;font-weight:700;font-size:14px}
     else if (a === 'solve') { if (!confirm('¿Dar por acertada «' + w.label + '»? Sanae verá su pista ya.')) return; await api('PATCH', '/rest/v1/words?id=eq.' + wid, { solved: true }, RET); }
     else if (a === 'resetw') await api('PATCH', '/rest/v1/words?id=eq.' + wid, Z, RET);
     else if (a === 'savew') await api('PATCH', '/rest/v1/words?id=eq.' + wid, { label: val(wEl, '[data-f="label"]'), riddle: val(wEl, '[data-f="riddle"]'), accept: val(wEl, '[data-f="accept"]'), clue: val(wEl, '[data-f="clue"]') }, RET);
-    else if (a === 'resetday') { if (!confirm('¿Reiniciar todo ' + d.title + '? Vuelve a empezar desde cero.')) return; await api('PATCH', '/rest/v1/words?day=eq.' + did, { fails: 0, solved: false, unlocked: false }, RET); }
-    else if (a === 'resetall') { if (!confirm('¿Reiniciar el progreso de TODOS los días?')) return; await api('PATCH', '/rest/v1/words?id=neq.__none__', { fails: 0, solved: false, unlocked: false }, RET); }
+    else if (a === 'resetday') { if (!confirm('¿Reiniciar todo ' + d.title + '? Vuelve a empezar desde cero.')) return; await api('PATCH', '/rest/v1/words?day=eq.' + did, { fails: 0, solved: false, unlocked: false }, RET); await api('PATCH', '/rest/v1/days?id=eq.' + did, { plan_force: false }, RET); }
+    else if (a === 'resetall') { if (!confirm('¿Reiniciar el progreso de TODOS los días? También se quita «Abrir ya» y «Enseñar planning ya»: cada día volverá a abrirse por su fecha.')) return; await api('PATCH', '/rest/v1/words?id=neq.__none__', { fails: 0, solved: false, unlocked: false }, RET); await api('PATCH', '/rest/v1/days?id=neq.__none__', { force_open: false, plan_force: false }, RET); }
     toast('Guardado');
     await load();
   }
