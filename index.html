@@ -186,6 +186,9 @@ form button:disabled,input:disabled{opacity:.6}
     return h + '<a class="go" href="#camino">Empezar el camino</a></header>';
   }
 
+  // app_state no manda 'seq': el viernes va en orden; si algún día lo manda, se usa tal cual.
+  function seqDay(d) { return d.seq != null ? !!d.seq : d.id === 'viernes'; }
+
   function card(d, w, i) {
     var f = w.fails, solved = w.status === 'solved', blown = w.status === 'blown', act = w.status === 'active', locked = w.status === 'locked';
     var bg = '#fff', bd = '#16342A', nb = '#A8232F', nf = '#fff', status = 'Te toca', lc = '#D4A73C', ls = 'dashed';
@@ -201,7 +204,7 @@ form button:disabled,input:disabled{opacity:.6}
     h += '<div style="display:flex;flex-direction:column"><span class="lab">Palabra ' + (i + 1) + '</span><span class="st">' + status + '</span></div>';
     if (locked) {
       h += '<div class="skel" aria-hidden="true"><i style="width:92%"></i><i style="width:78%"></i><i style="width:60%"></i></div>';
-      h += '<p class="st">' + (d.seq ? 'Sigue el camino: este acertijo aparece cuando termines el anterior.' : 'Se abre cuando consigas su prueba y nos lo cuentes.') + '</p>';
+      h += '<p class="st">' + (seqDay(d) ? 'Se desbloquea cuando consigas la palabra anterior.' : 'Se abre cuando consigas su prueba y nos lo cuentes.') + '</p>';
     }
     if (act && w.riddle) h += '<p class="riddle">' + esc(w.riddle) + '</p>';
     if (solved) {
