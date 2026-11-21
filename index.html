@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#A8232F">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2719%27 r=%2711%27 fill=%27%23D4A73C%27/%3E%3Crect x=%2713%27 y=%271%27 width=%276%27 height=%275%27 fill=%27%237A5A12%27/%3E%3C/svg%3E">
-<title>Misión 1 · Viernes</title>
+<title>Tu despedida</title>
 <style>
 @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/fraunces-latin-wght-normal.woff2) format('woff2')}
 @font-face{font-family:'Fraunces';font-style:italic;font-weight:100 900;font-display:swap;src:url(fonts/fraunces-latin-wght-italic.woff2) format('woff2')}
@@ -19,6 +19,11 @@ h1,h2{font-family:'Fraunces',Georgia,serif}
 p{margin:0}
 .serif{font-family:'Fraunces',Georgia,serif}
 :focus-visible{outline:3px solid #D4A73C;outline-offset:2px}
+.tabs{display:flex;gap:8px}
+.tab{flex:1;min-height:48px;border:2px solid #16342A;border-radius:16px;background:transparent;color:#16342A;font:700 16px 'Figtree',system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.tab[aria-selected=true]{background:#16342A;color:#FBF3E4}
+.tab:disabled{border-color:#D8CBB0;color:#7B857E;cursor:default}
+.banner{border-radius:14px;padding:12px 14px;background:#FBE3E1;color:#7E1A23;font-size:14px;font-weight:700;line-height:1.4}
 .hero{position:relative;overflow:hidden;border-radius:26px;padding:26px 22px 24px;background:#A8232F;color:#FBF3E4;display:flex;flex-direction:column;gap:16px}
 .hero>*{position:relative}
 .hero .snow{position:absolute;inset:0;pointer-events:none}
@@ -66,7 +71,13 @@ form button:disabled,input:disabled{opacity:.6}
 .final li{border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start}
 .final li b{flex:none;font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:18px;line-height:1.3}
 .final li span{font-size:16px;line-height:1.4}
-.plan{border:2px dashed #E9C46A;border-radius:14px;padding:16px;font-size:15px;line-height:1.5;white-space:pre-line}
+.plan{border:2px dashed #E9C46A;border-radius:18px;padding:18px 16px;display:flex;flex-direction:column;gap:14px}
+.plan h3{margin:0;font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:22px;color:#FBF3E4}
+.plan ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.plan li{display:grid;grid-template-columns:58px minmax(0,1fr);gap:12px;align-items:baseline;padding:0;background:none;border-radius:0}
+.plan li b{font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:17px;color:#E9C46A}
+.plan li b.soon{font-family:'Figtree',system-ui,sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#C9D8CE}
+.plan li span{font-size:16px;line-height:1.4}
 .lost{font-size:15px;line-height:1.5;color:#E9C46A}
 .shakeA{animation:shakeA .45s}.shakeB{animation:shakeB .45s}
 @keyframes shakeA{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
@@ -77,139 +88,113 @@ form button:disabled,input:disabled{opacity:.6}
 </head>
 <body>
 <main class="wrap">
-
-<header class="hero">
-<svg class="snow" aria-hidden="true" width="100%" height="100%">
-<circle cx="8%" cy="30%" r="2.5" fill="#FBF3E4" opacity=".7"/><circle cx="52%" cy="5%" r="2.5" fill="#FBF3E4" opacity=".6"/><circle cx="66%" cy="22%" r="2" fill="#E9C46A"/><circle cx="94%" cy="4%" r="2.5" fill="#FBF3E4" opacity=".6"/><circle cx="36%" cy="40%" r="2" fill="#FBF3E4" opacity=".5"/><circle cx="90%" cy="44%" r="2" fill="#FBF3E4" opacity=".5"/>
-</svg>
-<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
-<div style="display:flex;flex-direction:column;gap:14px;flex:1;min-width:0">
-<span class="pill">Viernes · Misión 1</span>
-<svg aria-hidden="true" width="46" height="62" viewBox="0 0 46 62" style="margin-left:2px"><path d="M10 60C14 42 20 26 32 6" fill="none" stroke="#16342A" stroke-width="2.5" stroke-linecap="round"/><path d="M14 46c-8-2-11-8-11-14 8 1 12 6 11 14zM17 36c-7-3-9-10-8-15 7 3 10 9 8 15zM22 26c-5-4-6-10-4-15 6 3 8 9 4 15zM17 44c6-4 14-3 20-9-3 8-11 12-20 9zM22 32c5-4 11-4 16-10-2 7-8 11-16 10z" fill="#2E5A47"/><circle cx="12" cy="24" r="4" fill="#E9C46A"/><circle cx="20" cy="18" r="3.4" fill="#E9C46A"/><circle cx="7" cy="31" r="3" fill="#E9C46A"/></svg>
-</div>
-<svg aria-hidden="true" width="132" height="168" viewBox="0 0 132 168" style="flex:none;margin-top:-6px">
-<path d="M66 6l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#D4A73C"/>
-<path d="M66 28L36 78h14L22 118h20L10 154h112l-32-36h20L82 78h14z" fill="#1F4A3A"/>
-<rect x="58" y="150" width="16" height="16" rx="2" fill="#7A5A12"/>
-<circle cx="64" cy="66" r="5" fill="#D4A73C"/><circle cx="50" cy="98" r="5.5" fill="#D4A73C"/><circle cx="80" cy="104" r="5.5" fill="#D4A73C"/><circle cx="34" cy="134" r="5.5" fill="#D4A73C"/><circle cx="66" cy="130" r="5.5" fill="#FBF3E4"/><circle cx="98" cy="136" r="5.5" fill="#D4A73C"/>
-</svg>
-</div>
-<h1>¡Tres palabras abren el sábado!</h1>
-<p class="lead">Cada día de tu despedida termina con una prueba. La de hoy: tres acertijos, tres palabras y tres pistas de lo que te espera mañana.</p>
-<ol class="rules">
-<li><span class="num" aria-hidden="true">1</span><p><b>Resuelve</b> cada acertijo y escribe la palabra.</p></li>
-<li><span class="num" aria-hidden="true">2</span><p><b>Si aciertas</b>, se desbloquea una pista del plan de mañana.</p></li>
-<li><span class="num" aria-hidden="true">3</span><p><b>Si fallas</b>, se rompe una de tus 3 bolas de Navidad. Si se rompen las tres, esa palabra se bloquea y <b>esa pista se pierde para siempre</b>.</p></li>
-<li><span class="num" aria-hidden="true">4</span><p><b>El premio:</b> si aciertas las tres palabras, te entregaremos el planning completo del sábado, impreso. Si no, solo tendrás las pistas de las palabras que aciertes.</p></li>
-</ol>
-<a class="go" href="#camino">Empezar el camino</a>
-</header>
-
-<div id="camino"></div>
-<div id="final"></div>
-
+<nav class="tabs" id="tabs" aria-label="Días"></nav>
+<div id="banner"></div>
+<div id="day"></div>
 </main>
-<script src="data.js"></script>
+<script src="config.js"></script>
 <script>
 (function () {
   'use strict';
-  var D = window.DATA;
-  var KEY = 'nv1';
-  var enc = new TextEncoder(), dec = new TextDecoder();
+  var C = window.CONFIG || {};
+  var CACHE_KEY = 'nv2-state';
+  var POLL_MS = 15000;
 
-  // Acertijos (el texto se ve igualmente en pantalla; las respuestas y las pistas van cifradas en data.js)
-  var RIDDLES = [
-    'Nací de dos comidas que casi no se hablan. Llego tarde para la primera y pronto para la segunda, y quien me pide nunca tiene prisa.',
-    'Soy un pueblo sin vecinos que desaparece sin dejar rastro. Mis casitas no tienen cama ni cocina, pero huelen a Navidad, a canela y a vino caliente. Quien me visita siempre se va con algo que no necesitaba.',
-    'Nací en una isla del Caribe, pero me hicieron famoso en discotecas de medio mundo. Mi latido es un «bum, ca, bum, ca» que no se cansa de repetirse, y suena más fuerte cuanto más tarde se hace. No soy un baile: soy lo que suena mientras otros lo bailan, pegados y hasta abajo.'
-  ];
+  // Textos fijos de cada día (el resto sale de la base de datos y lo editan las chicas desde el panel)
+  var HERO = {
+    viernes: {
+      h1: '¡Tres palabras abren el sábado!',
+      rules: [
+        '<b>Resuelve</b> cada acertijo y escribe la palabra.',
+        '<b>Si aciertas</b>, se desbloquea una pista del plan de mañana.',
+        '<b>Si fallas</b>, se rompe una de tus 3 bolas de Navidad. Si se rompen las tres, esa palabra se bloquea y <b>esa pista se pierde para siempre</b>.',
+        '<b>El premio:</b> si aciertas las tres palabras, verás aquí mismo el planning completo del sábado. Si no, solo tendrás las pistas de las palabras que aciertes.'
+      ]
+    },
+    sabado: {
+      h1: '¡Hoy eres una elfa!',
+      rules: [
+        '<b>Cumple</b> las pruebas de tu tarjeta de la misión.',
+        '<b>Cada prueba conseguida</b> nos la cuentas y desbloqueamos una palabra aquí.',
+        '<b>Escribe</b> aquí la palabra que hayamos desbloqueado.',
+        '<b>Si fallas</b>, se rompe una de tus 3 bolas. Si se rompen las tres, esa palabra se bloquea y <b>su pista se pierde</b>.'
+      ]
+    }
+  };
 
-  function norm(s) {
-    var t = String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-    t = t.replace(/[^a-z\s]/g, ' ').trim().split(/\s+/).filter(Boolean);
-    if (t.length > 1 && ['el', 'la', 'los', 'las', 'un', 'una'].indexOf(t[0]) >= 0) t.shift();
-    return t.join('');
-  }
-  function unb64(s) { var b = atob(s), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; }
-  function hex(u8) { return Array.prototype.map.call(u8, function (b) { return b.toString(16).padStart(2, '0'); }).join(''); }
-  function cat(a, b) { var u = new Uint8Array(a.length + b.length); u.set(a); u.set(b, a.length); return u; }
+  var state = null, cur = null, shake = '', busy = false, offline = false, lastJson = '';
 
-  async function tryWord(i, guess) {
-    var n = norm(guess);
-    if (!n) return null;
-    var w = D.words[i], salt = unb64(w.s);
-    var id = hex(new Uint8Array(await crypto.subtle.digest('SHA-256', cat(salt, enc.encode(n))))).slice(0, 16);
-    var e = w.v[id];
-    if (!e) return null;
-    try {
-      var base = await crypto.subtle.importKey('raw', enc.encode(n), 'PBKDF2', false, ['deriveKey']);
-      var key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: salt, iterations: D.it, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
-      var pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(e.iv) }, key, unb64(e.ct));
-      return { n: n, d: JSON.parse(dec.decode(pt)) };
-    } catch (err) { return null; }
-  }
-  async function openPlan(shares) {
-    var raw = await crypto.subtle.digest('SHA-256', enc.encode(shares.join('|')));
-    var key = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
-    var pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(D.plan.iv) }, key, unb64(D.plan.ct));
-    return JSON.parse(dec.decode(pt));
-  }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-  // Progreso en el móvil
-  var st = { fails: [0, 0, 0], solved: [null, null, null] }; // solved[i] = {n, d}
-  var saved = { fails: [0, 0, 0], ans: [null, null, null] };
-  var plan = null, shake = -1, justMsg = '', busy = false;
-  function load() { try { var r = JSON.parse(localStorage.getItem(KEY)); if (r && r.fails && r.ans) saved = r; } catch (e) {} }
-  function save() { try { localStorage.setItem(KEY, JSON.stringify({ fails: st.fails, ans: st.solved.map(function (s) { return s ? s.n : null; }) })); } catch (e) {} }
-  async function restore() {
-    st.fails = saved.fails.slice(0, 3).map(function (f) { return Math.min(3, f | 0); });
-    for (var i = 0; i < 3; i++) { if (saved.ans[i]) { var r = await tryWord(i, saved.ans[i]); if (r) st.solved[i] = r; } }
-    await checkPlan();
+  // ---- Servidor ----
+  function headers() {
+    var h = { 'apikey': C.anonKey, 'Content-Type': 'application/json' };
+    if (/^eyJ/.test(C.anonKey || '')) h['Authorization'] = 'Bearer ' + C.anonKey;
+    return h;
   }
-  async function checkPlan() {
-    plan = null;
-    if (st.solved.every(Boolean)) { try { plan = await openPlan(st.solved.map(function (s) { return s.d.k; })); } catch (e) {} }
+  function rpc(name, args) {
+    return fetch(C.url + '/rest/v1/rpc/' + name, { method: 'POST', headers: headers(), body: JSON.stringify(args || {}) })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); });
   }
 
-  function isDone(i) { return !!st.solved[i] || st.fails[i] >= 3; }
-  function activeIdx() { for (var i = 0; i < 3; i++) if (!isDone(i)) return i; return -1; }
-
+  // ---- Dibujos ----
   var SVG = {
     tree: '<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="#FBF3E4"><path d="M12 2l5 7h-3l4 6h-4l3 4H7l3-4H6l4-6H7z"/></svg>',
     check: '<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5L19.5 7"/></svg>',
     boom: '<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"><path d="M12 1l2.2 6.3L20.5 5l-2.6 6 5.1 3.6-6.3.6.6 6.3L12 17.5 6.7 21.5l.6-6.3L1 14.6 6.1 11 3.5 5l6.3 2.3z" fill="#fff"/></svg>',
     lock: '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3F5649" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+    lockSm: '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
     ok: '<svg aria-hidden="true" width="26" height="30" viewBox="0 0 32 36"><rect x="12" y="0" width="8" height="6" rx="1.5" fill="#7A5A12"/><circle cx="16" cy="22" r="13" fill="#D4A73C"/><path d="M8.5 19a8.5 8.5 0 0 1 5.5-7" fill="none" stroke="#FFF3C9" stroke-width="2.6" stroke-linecap="round"/></svg>',
     broken: '<svg aria-hidden="true" width="26" height="30" viewBox="0 0 32 36"><rect x="12" y="0" width="8" height="6" rx="1.5" fill="#8C9A90"/><circle cx="16" cy="22" r="13" fill="#E6DCC6" stroke="#A8232F" stroke-width="1.5" stroke-dasharray="3 2"/><path d="M16 9L12 17L19 22L13 28L16 35" fill="none" stroke="#A8232F" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg>',
     gift: function (fg, bg) { return '<svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28"><path d="M14 9C9 9 8 3 12 3c3 0 2 6 2 6zM14 9c5 0 6-6 2-6-3 0-2 6-2 6z" fill="none" stroke="' + fg + '" stroke-width="2" stroke-linejoin="round"/><rect x="3" y="9" width="22" height="6" rx="1.5" fill="' + fg + '"/><rect x="5" y="15" width="18" height="11" rx="1.5" fill="' + fg + '"/><rect x="12.5" y="9" width="3" height="17" fill="' + bg + '"/></svg>'; }
   };
   function crack(p) { return '<svg class="crack" aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="' + p[0] + '" fill="none" stroke="#A8232F" stroke-width="' + p[1] + '" stroke-linejoin="round" vector-effect="non-scaling-stroke" opacity="' + p[2] + '"/></svg>'; }
-  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-  function card(i, active) {
-    var f = st.fails[i], s = st.solved[i];
-    var solved = !!s, blown = !solved && f >= 3, act = !solved && !blown && i === active, locked = !solved && !blown && !act;
+  // ---- Piezas ----
+  function dayById(id) { return (state.days || []).filter(function (d) { return d.id === id; })[0]; }
+
+  function hero(d) {
+    var H = HERO[d.id] || { h1: d.title, rules: [] };
+    var h = '<header class="hero"><svg class="snow" aria-hidden="true" width="100%" height="100%"><circle cx="8%" cy="30%" r="2.5" fill="#FBF3E4" opacity=".7"/><circle cx="52%" cy="5%" r="2.5" fill="#FBF3E4" opacity=".6"/><circle cx="66%" cy="22%" r="2" fill="#E9C46A"/><circle cx="94%" cy="4%" r="2.5" fill="#FBF3E4" opacity=".6"/><circle cx="36%" cy="40%" r="2" fill="#FBF3E4" opacity=".5"/><circle cx="90%" cy="44%" r="2" fill="#FBF3E4" opacity=".5"/></svg>';
+    h += '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px"><div style="display:flex;flex-direction:column;gap:14px;flex:1;min-width:0"><span class="pill">' + esc(d.title) + ' · ' + esc(d.kicker) + '</span>';
+    h += '<svg aria-hidden="true" width="46" height="62" viewBox="0 0 46 62" style="margin-left:2px"><path d="M10 60C14 42 20 26 32 6" fill="none" stroke="#16342A" stroke-width="2.5" stroke-linecap="round"/><path d="M14 46c-8-2-11-8-11-14 8 1 12 6 11 14zM17 36c-7-3-9-10-8-15 7 3 10 9 8 15zM22 26c-5-4-6-10-4-15 6 3 8 9 4 15zM17 44c6-4 14-3 20-9-3 8-11 12-20 9zM22 32c5-4 11-4 16-10-2 7-8 11-16 10z" fill="#2E5A47"/><circle cx="12" cy="24" r="4" fill="#E9C46A"/><circle cx="20" cy="18" r="3.4" fill="#E9C46A"/><circle cx="7" cy="31" r="3" fill="#E9C46A"/></svg></div>';
+    h += '<svg aria-hidden="true" width="132" height="168" viewBox="0 0 132 168" style="flex:none;margin-top:-6px"><path d="M66 6l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#D4A73C"/><path d="M66 28L36 78h14L22 118h20L10 154h112l-32-36h20L82 78h14z" fill="#1F4A3A"/><rect x="58" y="150" width="16" height="16" rx="2" fill="#7A5A12"/><circle cx="64" cy="66" r="5" fill="#D4A73C"/><circle cx="50" cy="98" r="5.5" fill="#D4A73C"/><circle cx="80" cy="104" r="5.5" fill="#D4A73C"/><circle cx="34" cy="134" r="5.5" fill="#D4A73C"/><circle cx="66" cy="130" r="5.5" fill="#FBF3E4"/><circle cx="98" cy="136" r="5.5" fill="#D4A73C"/></svg></div>';
+    h += '<h1>' + esc(H.h1) + '</h1>';
+    if (d.intro) h += '<p class="lead">' + esc(d.intro) + '</p>';
+    if (H.rules.length) {
+      h += '<ol class="rules">';
+      H.rules.forEach(function (r, i) { h += '<li><span class="num" aria-hidden="true">' + (i + 1) + '</span><p>' + r + '</p></li>'; });
+      h += '</ol>';
+    }
+    return h + '<a class="go" href="#camino">Empezar el camino</a></header>';
+  }
+
+  function card(d, w, i) {
+    var f = w.fails, solved = w.status === 'solved', blown = w.status === 'blown', act = w.status === 'active', locked = w.status === 'locked';
     var bg = '#fff', bd = '#16342A', nb = '#A8232F', nf = '#fff', status = 'Te toca', lc = '#D4A73C', ls = 'dashed';
     if (solved) { bg = '#E4EFE0'; bd = '#2E5A47'; nb = '#2E5A47'; status = 'Desbloqueada'; lc = '#2E5A47'; ls = 'solid'; }
     if (blown) { bg = '#FBE3E1'; bd = '#A8232F'; status = 'Bola rota'; lc = '#A8232F'; ls = 'dotted'; }
     if (locked) { bg = '#F1E8D4'; bd = '#D8CBB0'; nb = '#CFC3A6'; nf = '#16342A'; status = 'Bloqueada'; lc = '#D8CBB0'; }
     var node = solved ? SVG.check : blown ? SVG.boom : locked ? SVG.lock : '<span>' + (i + 1) + '</span>';
     var h = '<div class="row"><div class="rail"><div class="node" style="background:' + nb + ';color:' + nf + '">' + node + '</div><div class="line" style="border-left-style:' + ls + ';border-left-color:' + lc + '"></div></div>';
-    h += '<section aria-label="Palabra ' + (i + 1) + '" class="card ' + (shake === i ? (f % 2 ? 'shakeA' : 'shakeB') : '') + '" style="background:' + bg + ';border-color:' + bd + '">';
+    h += '<section aria-label="Palabra ' + (i + 1) + '" class="card ' + (shake === w.id ? (f % 2 ? 'shakeA' : 'shakeB') : '') + '" style="background:' + bg + ';border-color:' + bd + '">';
     if (!solved && f >= 1) h += crack(['M100 0 L82 20 L90 32 L72 50', 2.5, .6]);
     if (!solved && f >= 2) h += crack(['M0 100 L20 80 L12 66 L34 50', 2.5, .6]);
     if (!solved && f >= 3) h += crack(['M52 0 L46 22 L60 38 L42 54 L58 74 L48 100 M0 40 L24 48 L32 64', 3, .7]);
     h += '<div style="display:flex;flex-direction:column"><span class="lab">Palabra ' + (i + 1) + '</span><span class="st">' + status + '</span></div>';
-    if (locked) h += '<div class="skel" aria-hidden="true"><i style="width:92%"></i><i style="width:78%"></i><i style="width:60%"></i></div><p class="st">Sigue el camino: este acertijo aparece cuando termines el anterior.</p>';
-    if (!locked && !solved) h += '<p class="riddle">' + RIDDLES[i] + '</p>';
+    if (locked) {
+      h += '<div class="skel" aria-hidden="true"><i style="width:92%"></i><i style="width:78%"></i><i style="width:60%"></i></div>';
+      h += '<p class="st">' + (d.seq ? 'Sigue el camino: este acertijo aparece cuando termines el anterior.' : 'Se abre cuando consigas su prueba y nos lo cuentes.') + '</p>';
+    }
+    if (act && w.riddle) h += '<p class="riddle">' + esc(w.riddle) + '</p>';
     if (solved) {
-      h += '<div class="letters" role="img" aria-label="' + esc(s.d.w) + '">' + s.d.w.split('').map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>';
+      h += '<div class="letters" role="img" aria-label="' + esc(w.label) + '">' + w.label.toUpperCase().split('').map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>';
       h += '<p class="ok" role="status">¡Esa es! Pista desbloqueada.</p>';
-      h += '<div class="clue"><b>Pista ' + (i + 1) + '</b><span>' + esc(s.d.c) + '</span></div>';
+      h += '<div class="clue"><b>Pista ' + (i + 1) + '</b><span>' + esc(w.clue) + '</span></div>';
     }
     if (act) {
-      h += '<form data-i="' + i + '" autocomplete="off"><label class="vh" for="g' + i + '">Tu respuesta</label><input id="g' + i + '" type="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Escribe la palabra"' + (busy ? ' disabled' : '') + '><button type="submit"' + (busy ? ' disabled' : '') + '>Probar</button></form>';
-      var m = justMsg || (f === 1 ? 'Ups, esa no. Se rompe una bola: te quedan 2 intentos.' : f === 2 ? '¡Cuidado! Te queda 1 intento.' : '');
+      h += '<form data-w="' + esc(w.id) + '" autocomplete="off"><label class="vh" for="g-' + esc(w.id) + '">Tu respuesta</label><input id="g-' + esc(w.id) + '" type="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Tu palabra"' + (busy || offline ? ' disabled' : '') + '><button type="submit"' + (busy || offline ? ' disabled' : '') + '>Probar</button></form>';
+      var m = busy ? 'Comprobando…' : f === 1 ? 'Ups, esa no. Se rompe una bola: te quedan 2 intentos.' : f === 2 ? '¡Cuidado! Te queda 1 intento.' : '';
       if (m) h += '<p class="msg" role="status">' + m + '</p>';
     }
     if (blown) h += '<p class="boom" role="status">¡Pum! Se rompió la última bola. Esta palabra se ha bloqueado y su pista se ha perdido. El camino sigue.</p>';
@@ -221,54 +206,122 @@ form button:disabled,input:disabled{opacity:.6}
     return h + '</section></div>';
   }
 
-  function render() {
-    var a = activeIdx(), done = a === -1, all = st.solved.every(Boolean);
-    var h = '<div class="row"><div class="rail"><div class="node" style="background:#2E5A47">' + SVG.tree + '</div><div class="line" style="border-left-color:' + (st.solved[0] || st.fails[0] ? '#2E5A47' : '#D4A73C') + '"></div></div><div style="display:flex;align-items:center;min-height:44px;padding-bottom:12px"><span class="kicker">Salida · tres paradas hasta el sábado</span></div></div>';
-    for (var i = 0; i < 3; i++) h += card(i, a);
-    var eb = done ? (all ? '#2E5A47' : '#D4A73C') : '#CFC3A6', ef = done ? '#FFFFFF' : '#3F5649';
-    h += '<div class="row"><div class="rail"><div class="node" style="background:' + eb + '">' + SVG.gift(ef, eb) + '</div></div><div style="display:flex;align-items:center;min-height:44px"><span class="kicker">Llegada · sábado</span></div></div>';
-    document.getElementById('camino').innerHTML = h;
-    shake = -1;
+  function planHtml(d) {
+    var items = String(d.plan_body || '').split('\n').filter(function (l) { return l.trim(); });
+    var h = '<div class="plan"><h3>' + esc(d.plan_title || 'Planning') + '</h3><ol>';
+    items.forEach(function (l) {
+      var p = l.indexOf('|'), t = p >= 0 ? l.slice(0, p).trim() : '', x = p >= 0 ? l.slice(p + 1).trim() : l.trim();
+      h += '<li>' + (t ? '<b>' + esc(t) + '</b>' : '<b class="soon">Luego</b>') + '<span>' + esc(x) + '</span></li>';
+    });
+    return h + '</ol></div>';
+  }
 
-    var fin = '';
-    if (done) {
-      fin = '<section class="final" aria-label="Resultado de la misión"><span class="k">' + (all ? 'Sábado desbloqueado' : 'Misión terminada') + '</span><h2>' + (all ? '¡Lo has conseguido!' : 'Esto es lo que has desbloqueado') + '</h2><p class="lead">' + (all ? 'Las tres palabras. Estas son tus pistas, y nosotras te entregaremos el planning completo del sábado, impreso, para que empiece el día.' : 'No has conseguido las tres palabras, así que no hay planning completo. Estas son tus pistas.') + '</p><ul>';
-      for (var j = 0; j < 3; j++) {
-        var ok = !!st.solved[j];
-        fin += '<li style="background:' + (ok ? '#E4EFE0' : '#FBE3E1') + ';color:' + (ok ? '#16342A' : '#7E1A23') + '"><b>' + (j + 1) + '</b><span>' + (ok ? 'Pista: ' + esc(st.solved[j].d.c) : 'Pista perdida. Esta palabra se bloqueó.') + '</span></li>';
-      }
-      fin += '</ul>';
-      if (!all) fin += '<p class="lost">Las pistas perdidas no se recuperan. Lo que falte del sábado lo descubrirás cuando llegue.</p>';
-      fin += '</section>';
+  function finalBox(d) {
+    if (!d.finished) return '';
+    var all = d.all_solved, hasPlan = d.plan_body && String(d.plan_body).trim();
+    var h = '<section class="final" aria-label="Resultado"><span class="k">' + (all ? 'Desbloqueado' : 'Misión terminada') + '</span><h2>' + (all ? '¡Lo has conseguido!' : 'Esto es lo que has desbloqueado') + '</h2>';
+    h += '<p class="lead">' + (all ? (hasPlan ? 'Las tres palabras. Aquí tienes tus pistas y el planning completo.' : 'Las tres palabras. Estas son tus pistas, y el planning completo te lo daremos nosotras.') : 'No has conseguido las tres palabras, así que no hay planning completo. Estas son tus pistas.') + '</p><ul>';
+    d.words.forEach(function (w, j) {
+      var ok = w.status === 'solved';
+      h += '<li style="background:' + (ok ? '#E4EFE0' : '#FBE3E1') + ';color:' + (ok ? '#16342A' : '#7E1A23') + '"><b>' + (j + 1) + '</b><span>' + (ok ? 'Pista: ' + esc(w.clue) : 'Pista perdida. Esta palabra se bloqueó.') + '</span></li>';
+    });
+    h += '</ul>';
+    if (all && hasPlan) h += planHtml(d);
+    else if (d.plan_body && String(d.plan_body).trim()) h += planHtml(d);
+    if (!all) h += '<p class="lost">Las pistas perdidas no se recuperan. Lo que falte lo descubrirás cuando llegue.</p>';
+    return h + '</section>';
+  }
+
+  function dayHtml(d) {
+    var h = hero(d) + '<div id="camino" style="height:0"></div><div style="display:flex;flex-direction:column;margin-top:-4px">';
+    var started = d.words.some(function (w) { return w.status === 'solved' || w.fails > 0; });
+    h += '<div class="row"><div class="rail"><div class="node" style="background:#2E5A47">' + SVG.tree + '</div><div class="line" style="border-left-color:' + (started ? '#2E5A47' : '#D4A73C') + '"></div></div><div style="display:flex;align-items:center;min-height:44px;padding-bottom:12px"><span class="kicker">Salida · ' + d.words.length + ' paradas</span></div></div>';
+    d.words.forEach(function (w, i) { h += card(d, w, i); });
+    var eb = d.finished ? (d.all_solved ? '#2E5A47' : '#D4A73C') : '#CFC3A6', ef = d.finished ? '#FFFFFF' : '#3F5649';
+    h += '<div class="row"><div class="rail"><div class="node" style="background:' + eb + '">' + SVG.gift(ef, eb) + '</div></div><div style="display:flex;align-items:center;min-height:44px"><span class="kicker">Llegada</span></div></div></div>';
+    return h + finalBox(d);
+  }
+
+  function render() {
+    var tabs = '';
+    (state.days || []).forEach(function (d) {
+      tabs += '<button class="tab" role="tab" data-day="' + esc(d.id) + '" aria-selected="' + (d.id === cur) + '"' + (d.open ? '' : ' disabled') + '>' + (d.open ? '' : SVG.lockSm) + esc(d.title) + '</button>';
+    });
+    document.getElementById('tabs').innerHTML = tabs;
+    document.getElementById('banner').innerHTML = offline ? '<p class="banner" role="status">Sin conexión: puedes mirar lo que ya tenías, pero no probar palabras hasta que vuelva internet. No se gasta ningún intento.</p>' : '';
+    var d = dayById(cur);
+    var keep = null, ae = document.activeElement;
+    if (ae && ae.tagName === 'INPUT') keep = { id: ae.id, v: ae.value };
+    document.getElementById('day').innerHTML = d && d.open ? dayHtml(d) : '';
+    shake = '';
+    if (keep) { var el = document.getElementById(keep.id); if (el) { el.value = keep.v; el.focus(); } }
+  }
+
+  function pickDay() {
+    var days = (state.days || []).filter(function (d) { return d.open; });
+    if (!days.length) return null;
+    if (cur && days.some(function (d) { return d.id === cur; })) return cur;
+    // Por defecto, el último día abierto
+    return days[days.length - 1].id;
+  }
+
+  function apply(s, fromCache) {
+    var j = JSON.stringify(s);
+    state = s; cur = pickDay();
+    offline = !!fromCache;
+    if (j !== lastJson || offline !== apply.last) { lastJson = j; apply.last = offline; render(); }
+  }
+
+  async function refresh() {
+    try {
+      var s = await rpc('app_state');
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(s)); } catch (e) {}
+      apply(s, false);
+    } catch (e) {
+      if (!state) {
+        try { var c = JSON.parse(localStorage.getItem(CACHE_KEY)); if (c && c.days) { apply(c, true); return; } } catch (e2) {}
+        document.getElementById('day').innerHTML = '<p class="banner" role="status">No se puede cargar ahora mismo. Comprueba que tienes internet y vuelve a abrir la página.</p>';
+      } else if (!offline) { offline = true; render(); }
     }
-    document.getElementById('final').innerHTML = fin;
   }
 
   async function onSubmit(e) {
-    var f = e.target.closest('form[data-i]');
+    var f = e.target.closest('form[data-w]');
     if (!f) return;
     e.preventDefault();
-    if (busy) return;
-    var i = +f.getAttribute('data-i'), inp = f.querySelector('input'), val = inp.value;
-    if (!norm(val)) { inp.focus(); return; }
-    busy = true; justMsg = 'Comprobando…'; render();
-    var r = null;
-    try { r = await tryWord(i, val); } catch (err) { r = null; }
-    busy = false; justMsg = '';
-    if (r) { st.solved[i] = r; await checkPlan(); }
-    else { st.fails[i] = Math.min(3, st.fails[i] + 1); shake = i; }
-    save(); render();
-    var nx = document.getElementById('g' + activeIdx());
-    if (r && nx && nx.scrollIntoView) { try { nx.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e2) {} }
-    else if (!r && nx) nx.focus();
+    if (busy || offline) return;
+    var id = f.getAttribute('data-w'), inp = f.querySelector('input'), val = inp.value.trim();
+    if (!val) { inp.focus(); return; }
+    busy = true; render();
+    var r = null, failed = false;
+    try { r = await rpc('app_try', { word_id: id, guess: val }); } catch (err) { failed = true; }
+    busy = false;
+    if (failed) { offline = true; render(); return; }
+    if (r && r.ok === false && r.fails != null && !r.error) shake = id;
+    lastJson = '';
+    await refresh();
+    var d = dayById(cur), act = d && d.words.filter(function (w) { return w.status === 'active'; })[0];
+    var nx = act && document.getElementById('g-' + act.id);
+    if (r && r.ok && nx && nx.scrollIntoView) { try { nx.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e2) {} }
+    else if (nx) nx.focus();
   }
 
-  async function init() {
-    if (/[?&]reset=1/.test(location.search)) { try { localStorage.removeItem(KEY); } catch (e) {} location.replace(location.pathname); return; }
-    load();
-    try { await restore(); } catch (e) {}
-    render();
-    document.getElementById('camino').addEventListener('submit', onSubmit);
+  function init() {
+    if (!C.url || !C.anonKey) {
+      document.getElementById('day').innerHTML = '<p class="banner">Falta conectar la base de datos (config.js).</p>';
+      return;
+    }
+    document.getElementById('tabs').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-day]');
+      if (!b || b.disabled) return;
+      cur = b.getAttribute('data-day'); lastJson = ''; render();
+      window.scrollTo(0, 0);
+    });
+    document.getElementById('day').addEventListener('submit', onSubmit);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) refresh(); });
+    window.addEventListener('online', refresh);
+    setInterval(function () { if (!document.hidden && !busy) refresh(); }, POLL_MS);
+    refresh();
     if ('serviceWorker' in navigator) { try { navigator.serviceWorker.register('sw.js'); } catch (e) {} }
   }
   init();
