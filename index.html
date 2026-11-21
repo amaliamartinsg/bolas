@@ -71,13 +71,28 @@ form button:disabled,input:disabled{opacity:.6}
 .final li{border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start}
 .final li b{flex:none;font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:18px;line-height:1.3}
 .final li span{font-size:16px;line-height:1.4}
-.plan{border:2px dashed #E9C46A;border-radius:18px;padding:18px 16px;display:flex;flex-direction:column;gap:14px}
-.plan h3{margin:0;font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:22px;color:#FBF3E4}
-.plan ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
-.plan li{display:grid;grid-template-columns:58px minmax(0,1fr);gap:12px;align-items:baseline;padding:0;background:none;border-radius:0}
-.plan li b{font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:17px;color:#E9C46A}
-.plan li b.soon{font-family:'Figtree',system-ui,sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#C9D8CE}
-.plan li span{font-size:16px;line-height:1.4}
+.planbtn{min-height:52px;border:0;border-radius:16px;background:#D4A73C;color:#16342A;font:800 17px 'Figtree',system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+#plan{position:fixed;inset:0;z-index:50;background:#FBF3E4;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}
+#plan.open{display:block}
+#plan .pw{max-width:560px;margin:0 auto;padding-bottom:36px}
+#plan .ph{position:relative;overflow:hidden;background:#A8232F;color:#FBF3E4;padding:20px 22px 30px;border-bottom:6px solid #D4A73C}
+#plan .ph .frame{position:absolute;inset:12px;border:2px solid #FBF3E4;border-radius:22px;opacity:.55;pointer-events:none}
+#plan .ph>*{position:relative}
+#plan .back{border:2px solid #FBF3E4;background:transparent;color:#FBF3E4;border-radius:999px;font:700 14px 'Figtree',system-ui,sans-serif;padding:8px 16px;cursor:pointer;margin-bottom:16px}
+#plan .ph .hi{margin:12px 0 0;font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:600;font-size:24px;color:#E9C46A}
+#plan .ph h1{margin:2px 0 0;font-weight:800;font-size:38px;line-height:1.04;text-wrap:balance}
+#plan .pl{position:relative;margin:22px 18px 0;display:flex;flex-direction:column;gap:10px}
+#plan .pl:before{content:'';position:absolute;left:21px;top:26px;bottom:26px;width:3px;background:#D4A73C}
+#plan .st{position:relative;display:flex;gap:14px;align-items:center}
+#plan .n{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:20px;border:3px solid #FBF3E4}
+#plan .c{flex:1;min-width:0;background:#fff;border:2px solid #16342A;border-radius:14px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+#plan .c h2{margin:0;font-weight:800;font-size:19px;line-height:1.12}
+#plan .c p{margin:3px 0 0;font-size:14px;line-height:1.35}
+#plan .t{flex:none;font-weight:700;font-size:14px;padding:5px 12px;border-radius:999px;background:#A8232F;color:#fff;border:2px solid #A8232F}
+#plan .t.soon{background:#fff;color:#A8232F}
+#plan .bye{margin:26px 18px 0;display:flex;align-items:center;gap:12px}
+#plan .bye i{flex:1;height:2px;background:#16342A}
+#plan .bye span{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:600;font-size:22px}
 .lost{font-size:15px;line-height:1.5;color:#E9C46A}
 .shakeA{animation:shakeA .45s}.shakeB{animation:shakeB .45s}
 @keyframes shakeA{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
@@ -92,6 +107,7 @@ form button:disabled,input:disabled{opacity:.6}
 <div id="banner"></div>
 <div id="day"></div>
 </main>
+<div id="plan" role="dialog" aria-modal="true" aria-label="Planning"></div>
 <script src="config.js"></script>
 <script>
 (function () {
@@ -206,14 +222,25 @@ form button:disabled,input:disabled{opacity:.6}
     return h + '</section></div>';
   }
 
-  function planHtml(d) {
+  var NC = [['#A8232F', '#fff'], ['#D4A73C', '#16342A'], ['#2E5A47', '#fff']];
+  function planScreen(d) {
     var items = String(d.plan_body || '').split('\n').filter(function (l) { return l.trim(); });
-    var h = '<div class="plan"><h3>' + esc(d.plan_title || 'Planning') + '</h3><ol>';
-    items.forEach(function (l) {
-      var p = l.indexOf('|'), t = p >= 0 ? l.slice(0, p).trim() : '', x = p >= 0 ? l.slice(p + 1).trim() : l.trim();
-      h += '<li>' + (t ? '<b>' + esc(t) + '</b>' : '<b class="soon">Luego</b>') + '<span>' + esc(x) + '</span></li>';
+    var h = '<div class="pw"><header class="ph"><div class="frame"></div><button class="back" data-closeplan>← Volver</button><span class="pill">Planning completo</span><p class="hi">Sanae,</p><h1>' + esc(d.plan_title || 'Planning') + '</h1></header><div class="pl">';
+    items.forEach(function (l, i) {
+      var q = l.split('|'), t = (q[0] || '').trim(), ti = (q[1] || '').trim(), de = q.slice(2).join('|').trim();
+      if (q.length === 2) { ti = q[1].trim(); }
+      var col = NC[i % 3];
+      h += '<div class="st"><div class="n" style="background:' + col[0] + ';color:' + col[1] + '">' + (i + 1) + '</div><div class="c"><div style="min-width:0"><h2>' + esc(ti) + '</h2>' + (de ? '<p>' + esc(de) + '</p>' : '') + '</div><span class="t' + (t ? '' : ' soon') + '">' + esc(t || 'Después') + '</span></div></div>';
     });
-    return h + '</ol></div>';
+    return h + '</div><div class="bye"><i></i><span>¡Prost, Sanae!</span><i></i></div></div>';
+  }
+  var planOpen = null;
+  function syncPlan() {
+    var el = document.getElementById('plan'), d = planOpen && dayById(planOpen);
+    if (d && d.plan_body && String(d.plan_body).trim()) {
+      var top = el.scrollTop;
+      el.innerHTML = planScreen(d); el.classList.add('open'); document.body.style.overflow = 'hidden'; el.scrollTop = top;
+    } else { planOpen = null; el.classList.remove('open'); el.innerHTML = ''; document.body.style.overflow = ''; }
   }
 
   function finalBox(d) {
@@ -226,8 +253,7 @@ form button:disabled,input:disabled{opacity:.6}
       h += '<li style="background:' + (ok ? '#E4EFE0' : '#FBE3E1') + ';color:' + (ok ? '#16342A' : '#7E1A23') + '"><b>' + (j + 1) + '</b><span>' + (ok ? 'Pista: ' + esc(w.clue) : 'Pista perdida. Esta palabra se bloqueó.') + '</span></li>';
     });
     h += '</ul>';
-    if (all && hasPlan) h += planHtml(d);
-    else if (d.plan_body && String(d.plan_body).trim()) h += planHtml(d);
+    if (d.plan_body && String(d.plan_body).trim()) h += '<button class="planbtn" data-plan="' + esc(d.id) + '">Ver ' + (all ? 'el planning completo' : 'el planning') + '</button>';
     if (!all) h += '<p class="lost">Las pistas perdidas no se recuperan. Lo que falte lo descubrirás cuando llegue.</p>';
     return h + '</section>';
   }
@@ -255,6 +281,7 @@ form button:disabled,input:disabled{opacity:.6}
     document.getElementById('day').innerHTML = d && d.open ? dayHtml(d) : '';
     shake = '';
     if (keep) { var el = document.getElementById(keep.id); if (el) { el.value = keep.v; el.focus(); } }
+    syncPlan();
   }
 
   function pickDay() {
@@ -318,6 +345,14 @@ form button:disabled,input:disabled{opacity:.6}
       window.scrollTo(0, 0);
     });
     document.getElementById('day').addEventListener('submit', onSubmit);
+    document.getElementById('day').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-plan]');
+      if (b) { planOpen = b.getAttribute('data-plan'); syncPlan(); document.getElementById('plan').scrollTop = 0; }
+    });
+    document.getElementById('plan').addEventListener('click', function (e) {
+      if (e.target.closest('[data-closeplan]')) { planOpen = null; syncPlan(); }
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && planOpen) { planOpen = null; syncPlan(); } });
     document.addEventListener('visibilitychange', function () { if (!document.hidden) refresh(); });
     window.addEventListener('online', refresh);
     setInterval(function () { if (!document.hidden && !busy) refresh(); }, POLL_MS);

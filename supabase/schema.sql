@@ -19,7 +19,7 @@ create table public.days (
   force_open boolean not null default false,    -- el admin lo abre ya, sin esperar a la fecha
   seq boolean not null default true,            -- true: palabras en orden; false: las desbloquea el admin una a una
   plan_title text not null default '',          -- título del planning que desbloquea este día
-  plan_body text not null default '',           -- una línea por parada: "hora | texto" (hora vacía = "Después")
+  plan_body text not null default '',           -- una línea por parada: "hora | título | descripción" (hora vacía = "Después")
   plan_force boolean not null default false     -- el admin enseña el planning aunque no haya acertado todo
 );
 
@@ -157,15 +157,15 @@ insert into public.days (id, pos, title, kicker, intro, opens_at, force_open, se
  'Cada día de tu despedida desbloquea una serie de pruebas. La de hoy: tres acertijos, tres palabras y tres pistas de lo que te espera mañana.',
  null, false, true,
  'Planning del sábado',
- '10:00 | Café y desayuno ligero, para empezar el día con energía
- | Paseíto relajado por la ciudad
-13:00 | Brunch
- | Revelación de la misión del día
- | Sanae nos enseña sus rincones favoritos de la ciudad
-17:00 | Mercadillo navideño y merendola allí
- | Volver a cambiarnos y coger fuerzas
-20:30 | Cena en un restaurante, todas monas
- | Discoteca de música reggaeton',
+ '10:00 | Café y desayuno ligero | Para empezar el día con energía.
+ | Paseíto por la ciudad | Sin prisa, a ritmo relajado.
+13:00 | Brunch | Ven con hambre.
+ | Revelación de la misión del día | Al terminar el brunch descubrirás qué te toca hoy.
+ | Tus rincones favoritos | Tú nos enseñas los lugares de la ciudad que más te gustan.
+17:00 | Mercadillo y merendola | Mercadillo navideño, con merienda incluida. Abrígate bien.
+ | A cambiarse | Un rato para coger fuerzas y arreglarnos.
+20:30 | Cena en un restaurante | Todas monas.
+ | Noche de reggaeton | Discoteca y música de reggaeton. Ve preparando los pies.',
  false),
 ('sabado', 2, 'Sábado', 'Misión 2',
  'Cada prueba que consigas nos la cuentas y desbloqueamos una palabra. Cada palabra acertada te da una pista del plan de mañana.',
